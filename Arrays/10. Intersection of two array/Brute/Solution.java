@@ -11,6 +11,7 @@ public class Solution {
                     vis[j] =1;
                     break;
                 }
+                // Array in sorted form if element j in 2nd array is grator elemet in 1st array at i than we sure the remaining portion of 2nd array will not contain element which is equal to i element in 1st array
                 if(b[j]>a[i]){
                     break;
                 }
