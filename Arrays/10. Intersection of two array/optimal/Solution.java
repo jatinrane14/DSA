@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Solution {
     public static ArrayList<Integer> intersection(int arr1[], int arr2[]){
@@ -8,7 +9,7 @@ public class Solution {
         int i =0;
         int j =0;
 
-        ArrayList ls = new ArrayList<Integer>();
+        ArrayList<Integer> ls = new ArrayList<>();
 
         while (i<n1 && j<n2) {
             if (arr1[i]<arr2[j]) {
