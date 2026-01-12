@@ -1,17 +1,21 @@
-public class Solution {
+public class Solution{
     public static int findMissing(int arr[]){
-            int n = arr.length+1;
-            int sum = n*(n+1)/2;
-
-            int actuallSum = 0;
-            for (int i : arr) {
-                actuallSum+=i;
+        for (int i = 1; i <=arr.length; i++) {
+            Boolean flag =false;
+            for (int j = 0; j < arr.length; j++) {
+                if (i == arr[j]) {
+                    flag =true;
+                    break;
+                }
             }
-
-            return sum-actuallSum;
+            if (flag) {
+                return i;
+            }
+        }
+        return -1;
     }
     public static void main(String[] args) {
-        int arr[] = {1,2,4,5,6};
-        System.out.println(findMissing(arr));
+        int arr[] = {1,2,3,5};
+        System.out.println(findMissing(arr));   
     }
 }
