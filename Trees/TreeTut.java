@@ -1,3 +1,8 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
+import javax.management.Query;
+
 class Node{
     int data;
     Node left;
@@ -27,6 +32,20 @@ class Tree1{
         postOrder(root.right);
         System.out.print(root.data + " ");
     }
+    public static void levelOrder(Node root){
+        Queue<Node> que = new LinkedList<>();
+        que.add(root);
+        while (!que.isEmpty()) {
+            Node curr = que.poll();
+            System.out.print(curr.data+" ");
+            if(curr.left!=null){
+                que.add(curr.left);
+            }
+            if(curr.right!=null){
+                que.add(curr.right);
+            }
+        }
+    }
 }
 public class TreeTut {
     
@@ -34,6 +53,10 @@ public class TreeTut {
         Node root = new Node(1);
         root.left = new Node(2);
         root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+        root.right.left = new Node(6);
+        root.right.right = new Node(7);
         
         Tree1 tree = new Tree1();
         tree.postOrder(root);
@@ -41,5 +64,7 @@ public class TreeTut {
         tree.preOrder(root);
         System.out.println();
         tree.inOrder(root);
+        System.out.println();
+        tree.levelOrder(root);
     }
 }
