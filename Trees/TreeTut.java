@@ -7,6 +7,7 @@ class Node{
     int data;
     Node left;
     Node right;
+    Node(){}
     Node(int data){
         this.data = data;
         left = null;
@@ -46,19 +47,40 @@ class Tree1{
             }
         }
     }
+
+
+    public Node buildTree(Integer arr[]){
+        int n  = arr.length;
+        if(n == 0) return null;
+        Queue<Node> que  = new LinkedList<>();
+        Node root = new Node(arr[0]);
+        que.offer(root);
+        int j =1;
+        while(j!=n && !que.isEmpty()){
+            Node curr = que.poll();
+            if(j<n&&arr[j] != null){
+                curr.left = new Node(arr[j]);
+                que.offer(curr.left);
+            }
+            j++;
+            if(j<n&&arr[j]!=null ){
+                curr.right = new Node(arr[j]);
+                que.offer(curr.right);
+            }
+            j++;
+        }
+        return root;
+    }
 }
 public class TreeTut {
     
     public static void main(String[] args) {
-        Node root = new Node(1);
-        root.left = new Node(2);
-        root.right = new Node(3);
-        root.left.left = new Node(4);
-        root.left.right = new Node(5);
-        root.right.left = new Node(6);
-        root.right.right = new Node(7);
-        
         Tree1 tree = new Tree1();
+
+        Integer[] arr = {1,2,3,4,5,6};
+        Node root = tree.buildTree(arr);
+
+        
         tree.postOrder(root);
         System.out.println();
         tree.preOrder(root);
