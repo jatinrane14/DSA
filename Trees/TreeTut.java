@@ -71,6 +71,18 @@ class Tree1{
         }
         return root;
     }
+
+    public boolean isIdentical(Node root1,Node root2){
+        if(root1 == null && root2 == null) return true;
+
+        if(root1 == null || root2 == null) return false;
+
+        return root1.data == root2.data && isIdentical(root1.left, root2.left) && isIdentical(root1.right, root2.right);
+    }
+
+    public boolean isSemmatric(Node root){
+        return isIdentical(root.left, root.right);
+    }
 }
 public class TreeTut {
     
@@ -78,15 +90,26 @@ public class TreeTut {
         Tree1 tree = new Tree1();
 
         Integer[] arr = {1,2,3,4,5,6};
+        Integer[] arr2 = {1,2,3,4,5,6};
         Node root = tree.buildTree(arr);
-
+        Node root2 = tree.buildTree(arr2);
         
-        tree.postOrder(root);
-        System.out.println();
-        tree.preOrder(root);
-        System.out.println();
-        tree.inOrder(root);
-        System.out.println();
-        tree.levelOrder(root);
+        System.out.println("========= In,Pre,Post , level order traversal ============= ");
+        // tree.postOrder(root);
+        // System.out.println();
+        // tree.preOrder(root);
+        // System.out.println();
+        // tree.inOrder(root);
+        // System.out.println();
+        // tree.levelOrder(root);
+        
+        // System.out.println(tree.isIdentical(root, root2));
+
+
+        System.out.println("========== Symmetric Tree ========");
+
+        Integer[] arr3 = {1,2,2,3,4,3,6};
+        Node root3 = tree.buildTree(arr3);
+        System.out.println(tree.isSemmatric(root3));
     }
 }
