@@ -8,8 +8,12 @@ public class Solution {
         return res;
     }
     private static void printAnyRow(int n){
-        for (int i = 1; i <=n; i++) {
-            System.out.print(findValueNCR(n-1, i-1)+" ");
+        int res = 1;
+        System.out.print(res);
+        for (int c = 1; c <=n; c++) {
+            res *= (n-c);
+            res /= c;
+            System.out.print(res+" ");
         }
     }
     public static void main(String[] args) {

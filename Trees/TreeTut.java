@@ -83,6 +83,13 @@ class Tree1{
     public boolean isSemmatric(Node root){
         return isIdentical(root.left, root.right);
     }
+
+    public int height(Node root){
+        if(root == null) return 0;
+        int left = height(root.left);
+        int right  = height(root.right);
+        return Math.max(left,right) + 1;
+    }
 }
 public class TreeTut {
     
@@ -111,5 +118,9 @@ public class TreeTut {
         Integer[] arr3 = {1,2,2,3,4,3,6};
         Node root3 = tree.buildTree(arr3);
         System.out.println(tree.isSemmatric(root3));
+
+
+        System.out.println("Height of the tree is: " + tree.height(root));
+        
     }
 }
